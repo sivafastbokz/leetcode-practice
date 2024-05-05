@@ -1,5 +1,4 @@
 //check if object is instance of class
-
 var checkIfInstanceOf = function(obj, classFunction) {
    return Object.getPrototypeOf(obj) === classFunction.prototype
 
@@ -59,7 +58,6 @@ console.log(numberAdd())
 console.log(numberAdd())
 
 //Filter Elements from Array
-
 const filterArray = [1,20,35,68,90]
 const answer = []
 
@@ -74,3 +72,14 @@ function greaterNum(arr){
 greaterNum(filterArray)
 console.log(answer)
 
+//function composition
+
+const add = (x) => x + 5
+const multiply = (x) => x * 3
+const subtract = (x) => x - 10
+
+const compose = (...funs) => x => funs.reduceRight((acc,fn)=> fn(acc),x )
+
+const composedFunction = compose(subtract,multiply,add)
+const result = composedFunction(7)
+console.log(result)
