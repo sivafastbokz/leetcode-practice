@@ -78,8 +78,53 @@ const add = (x) => x + 5
 const multiply = (x) => x * 3
 const subtract = (x) => x - 10
 
-const compose = (...funs) => x => funs.reduceRight((acc,fn)=> fn(acc),x )
+// const compose = (...funs) => x => funs.reduceRight((acc,fn)=> fn(acc),x )
+const compose = (...funs)=>{
+  return (x)=>{
+     return funs.reduceRight((acc,fn)=>{
+        // console.log(acc)
+        // console.log(fn)
+       return fn(acc)
+     },x)
+  }
+}
 
 const composedFunction = compose(subtract,multiply,add)
 const result = composedFunction(7)
 console.log(result)
+
+const array = filterArray.reduceRight((prev,currentv)=>{
+    // console.log(prev,'prev')
+    // console.log(currentv,'currentv')
+    return prev+currentv
+},0)
+console.log(array)
+
+//check if object or array is empty
+
+const obj = {
+    name:'siva',
+    age:22
+}
+
+function isEmptyobj(obj){
+   if(Object.keys(obj).length === 0){
+      return true
+   }else {
+    return false
+   }
+}
+
+console.log(isEmptyobj(obj))
+
+//class calculator
+
+// class Calculator {
+//     constructor (add,subtract) {
+//        this.add = add,
+//        this.subtract = subtract
+//     }
+//     getResult = (value) =>{
+//           return this.add
+//     }
+// }
